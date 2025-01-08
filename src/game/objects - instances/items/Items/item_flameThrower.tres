@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dum76bdhg8sv3"]
+
+[ext_resource type="Texture2D" uid="uid://f0l1nqswpska" path="res://assets/flame.png" id="1_rlelh"]
+[ext_resource type="Script" path="res://src/game/templates/items/Item.gd" id="2_7tdqn"]
+[ext_resource type="PackedScene" uid="uid://hj3ulf0spoo" path="res://src/game/objects - instances/entities/bullets/fire_bullet.tscn" id="3_3uhg2"]
+[ext_resource type="Resource" uid="uid://ctc51gpa0ucdm" path="res://src/game/objects - instances/items/components/tags/tag_weapon.tres" id="4_v05cg"]
+[ext_resource type="Resource" uid="uid://cuum2knhwhiyh" path="res://src/game/objects - instances/items/components/tags/tag_basic.tres" id="5_rs2dc"]
+
+[resource]
+script = ExtResource("2_7tdqn")
+icon = ExtResource("1_rlelh")
+id = "flamethrower"
+name = "Flame Thrower"
+tags = Array[Resource("res://src/game/templates/items/components/ItemTag.gd")]([ExtResource("4_v05cg"), ExtResource("5_rs2dc")])
+spawn_scene = ExtResource("3_3uhg2")
+effect_scripts = Array[GDScript]([])
+process_scripts = Array[GDScript]([])
+base_cooldown = 0.5
+base_damage = 0.5
+base_lifespan = 1.0
+base_speed = 1.0

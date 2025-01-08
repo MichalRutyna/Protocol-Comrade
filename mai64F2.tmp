@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://jdymhq3o1r41"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_spqyx"]
+[ext_resource type="Texture2D" uid="uid://dklr2knqq1qaf" path="res://vector-pixel-art-future-tank-260nw-1434474491.webp" id="2_jk7qj"]
+[ext_resource type="PackedScene" uid="uid://81lw7faou5pq" path="res://bullet.tscn" id="2_ofr8f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3i00a"]
+custom_solver_bias = 0.775
+radius = 105.926
+height = 263.21
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(447, 183)
+scale = Vector2(0.311538, 0.311538)
+script = ExtResource("1_spqyx")
+bullet_scene = ExtResource("2_ofr8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_jk7qj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3i00a")

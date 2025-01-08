@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://wyl001u1lkqc"]
+
+[ext_resource type="Script" path="res://src/gui/scenes/lobbies.gd" id="1_wnuuf"]
+[ext_resource type="Texture2D" uid="uid://cl1r3akgdlk1l" path="res://assets/Bez_tytułu-removebg-preview.png" id="2_x8gk1"]
+
+[node name="lobbies" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wnuuf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 1832.0
+offset_top = 32.0
+offset_right = 1854.32
+offset_bottom = 54.44
+text = "X"
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -294.5
+offset_top = 22.0
+offset_right = 294.5
+offset_bottom = 178.0
+grow_horizontal = 2
+texture = ExtResource("2_x8gk1")
+stretch_mode = 5
+
+[node name="Lobbies" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -537.5
+offset_top = -344.5
+offset_right = 537.5
+offset_bottom = 344.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -131.0
+offset_right = 87.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Join
+"
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd4spxdvux66t"]
+
+[ext_resource type="Script" path="res://src/game/objects - instances/entities/enemies/basic_enemy.gd" id="1_2o2h7"]
+[ext_resource type="Texture2D" uid="uid://dgsju0r20r71r" path="res://assets/enemy2.png" id="3_dj3ic"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3i00a"]
+radius = 105.926
+height = 315.457
+
+[sub_resource type="Animation" id="Animation_rtcsk"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_4ntlu"]
+resource_name = "new_animation_2"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3nos"]
+_data = {
+"new_animation": SubResource("Animation_rtcsk"),
+"new_animation_2": SubResource("Animation_4ntlu")
+}
+
+[node name="Enemy" type="Area2D"]
+position = Vector2(447, 183)
+scale = Vector2(0.317, 0.317)
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_2o2h7")
+enemy_name = "Buga"
+speed = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.15457)
+texture = ExtResource("3_dj3ic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3i00a")
+
+[node name="Barrel" type="Marker2D" parent="."]
+position = Vector2(-116.719, -63.0914)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y3nos")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(3.15464, -4.73186)
+scale = Vector2(17.3502, 13.4069)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvkuxot5l4fuj"]
+
+[ext_resource type="Script" path="res://src/game/game.gd" id="1_n4rkh"]
+[ext_resource type="PackedScene" uid="uid://bnfdbi14xwhpj" path="res://src/gui/scenes/hud.tscn" id="2_8cuvh"]
+[ext_resource type="Script" path="res://src/game/managers/InputManager.gd" id="3_g5iub"]
+[ext_resource type="Script" path="res://src/game/managers/GuiManager.gd" id="4_m78se"]
+[ext_resource type="Script" path="res://src/game/managers/WaveManager.gd" id="5_f3mty"]
+[ext_resource type="PackedScene" uid="uid://cr5ghihjwhb63" path="res://src/game/objects - instances/player/player.tscn" id="6_l4qif"]
+[ext_resource type="Script" path="res://src/game/spawners/BulletSpawner.gd" id="7_h5dwc"]
+[ext_resource type="Script" path="res://src/game/spawners/EnemySpawner.gd" id="8_vwk7m"]
+[ext_resource type="Script" path="res://src/game/Time.gd" id="9_uq2te"]
+[ext_resource type="Script" path="res://src/gui/components/unpause_button.gd" id="10_wj408"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngrgl"]
+size = Vector2(1313, 176.5)
+
+[sub_resource type="Gradient" id="Gradient_ixt0p"]
+offsets = PackedFloat32Array(0, 0.387195, 0.682927, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.39939, 0.39939, 0.39939, 1, 0.273598, 0.273598, 0.273598, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c3uyl"]
+gradient = SubResource("Gradient_ixt0p")
+
+[sub_resource type="Curve2D" id="Curve2D_tt2xk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -33.928, 1230.83, 0, 0, 0, 0, -70.928, -90.1715, 0, 0, 0, 0, 2050, -29, 0, 0, 0, 0, 2028, 1207, 0, 0, 0, 0, -15, 1213)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_n4rkh")
+
+[node name="Hud" parent="." instance=ExtResource("2_8cuvh")]
+unique_name_in_owner = true
+
+[node name="InputManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("3_g5iub")
+
+[node name="GuiManager" type="Node" parent="."]
+script = ExtResource("4_m78se")
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("5_f3mty")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(920.5, 598.25)
+shape = SubResource("RectangleShape2D_ngrgl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/StaticBody2D"]
+position = Vector2(919, 601)
+scale = Vector2(20.5781, 2.96875)
+texture = SubResource("GradientTexture2D_c3uyl")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("Players")
+
+[node name="Players" type="Node" parent="MultiplayerSpawner"]
+
+[node name="TestPlayer" parent="MultiplayerSpawner/Players" instance=ExtResource("6_l4qif")]
+unique_name_in_owner = true
+position = Vector2(731, 298)
+
+[node name="Spawnpoint" type="Marker2D" parent="MultiplayerSpawner"]
+position = Vector2(909, 364)
+rotation = -3.14159
+scale = Vector2(1.05276, -3.72648)
+
+[node name="BulletSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("Bullets")
+script = ExtResource("7_h5dwc")
+
+[node name="Bullets" type="Node" parent="BulletSpawner"]
+unique_name_in_owner = true
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+unique_name_in_owner = true
+spawn_path = NodePath("Enemies")
+script = ExtResource("8_vwk7m")
+
+[node name="Enemies" type="Node" parent="EnemySpawner"]
+
+[node name="EnemyPath" type="Path2D" parent="EnemySpawner"]
+position = Vector2(-65, 0)
+curve = SubResource("Curve2D_tt2xk")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawner/EnemyPath"]
+unique_name_in_owner = true
+position = Vector2(-33.928, 1230.83)
+rotation = -1.5988
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+unique_name_in_owner = true
+
+[node name="SpawningButton" type="CheckButton" parent="EnemySpawner"]
+offset_left = 1660.0
+offset_top = 41.0
+offset_right = 1839.0
+offset_bottom = 115.0
+text = "Enemy spawning"
+
+[node name="Label" type="Label" parent="EnemySpawner/SpawningButton"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -7.0
+offset_right = 308.0
+offset_bottom = 23.0
+text = "Only the host can change these settings"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 913.841
+offset_top = 85.3145
+offset_right = 953.841
+offset_bottom = 108.315
+scale = Vector2(0.877507, 0.704433)
+text = "Enemies killed: 0"
+
+[node name="Time" type="Label" parent="."]
+offset_left = 915.0
+offset_top = 54.0
+offset_right = 1024.0
+offset_bottom = 83.0
+text = "Time: 00:00"
+script = ExtResource("9_uq2te")
+
+[node name="GameTimer" type="Timer" parent="Time"]
+autostart = true
+
+[node name="Pause" type="Button" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+top_level = true
+z_index = 25
+offset_left = 178.0
+offset_top = 201.0
+offset_right = 1625.0
+offset_bottom = 873.0
+text = "Unpause"
+script = ExtResource("10_wj408")
+
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="WaveManager" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="toggled" from="EnemySpawner/SpawningButton" to="WaveManager" method="_on_spawning_button_toggled"]
+[connection signal="timeout" from="Time/GameTimer" to="Time" method="_on_game_timer_timeout"]
+[connection signal="pressed" from="Pause" to="Pause" method="_on_pressed"]

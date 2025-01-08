@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bvgbna22jkyc7"]
+
+[ext_resource type="Script" path="res://src/game/objects - instances/items/components/item_scripts/test_cooldownhalver.gd" id="1_40k0l"]
+[ext_resource type="Script" path="res://src/game/templates/items/Item.gd" id="1_aft5h"]
+[ext_resource type="Texture2D" uid="uid://bu74jrnitijfl" path="res://assets/adrenaline.png" id="2_q735n"]
+[ext_resource type="Resource" uid="uid://cuum2knhwhiyh" path="res://src/game/objects - instances/items/components/tags/tag_basic.tres" id="4_s3a1u"]
+
+[resource]
+script = ExtResource("1_aft5h")
+icon = ExtResource("2_q735n")
+id = "cooldown_halver"
+name = "Adrenaline"
+tags = Array[Resource("res://src/game/templates/items/components/ItemTag.gd")]([ExtResource("4_s3a1u")])
+effect_scripts = Array[GDScript]([ExtResource("1_40k0l")])
+process_scripts = Array[GDScript]([])
+base_cooldown = 1.0
+base_damage = 1.0
+base_lifespan = 1.0
+base_speed = 1.0

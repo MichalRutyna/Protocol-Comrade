@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf8tjmfbutho6"]
+
+[ext_resource type="Script" path="res://src/gui/components/board_slot.gd" id="1_6xffp"]
+
+[node name="SlotTexture" type="TextureRect"]
+unique_name_in_owner = true
+offset_right = 100.0
+offset_bottom = 100.0
+expand_mode = 2
+script = ExtResource("1_6xffp")
+
+[node name="HoverTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5

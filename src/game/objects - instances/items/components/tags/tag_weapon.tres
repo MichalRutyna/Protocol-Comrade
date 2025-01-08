@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemTag" load_steps=2 format=3 uid="uid://ctc51gpa0ucdm"]
+
+[ext_resource type="Script" path="res://src/game/templates/items/components/ItemTag.gd" id="1_j6e8u"]
+
+[resource]
+script = ExtResource("1_j6e8u")
+id = ""
+readable_name = ""

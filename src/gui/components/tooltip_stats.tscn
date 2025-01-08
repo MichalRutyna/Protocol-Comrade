@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://0xreoehu412b"]
+
+[ext_resource type="Script" path="res://src/gui/components/tooltip_stats.gd" id="1_x8p48"]
+[ext_resource type="Texture2D" uid="uid://t7mf38aullj2" path="res://assets/empty_slot.png" id="2_ysgsf"]
+
+[node name="ItemStats" type="Control"]
+z_index = 999
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_x8p48")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ItemIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_ysgsf")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ItemStats" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "Cooldown:"
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "0"
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "Damage"
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "0"
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "Aaaaa"
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ItemStats"]
+layout_mode = 2
+text = "0"

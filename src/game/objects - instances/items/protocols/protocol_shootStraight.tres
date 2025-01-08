@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Protocol" load_steps=10 format=3 uid="uid://b8lbg3soa4xpb"]
+
+[ext_resource type="Texture2D" uid="uid://c7s35t1le8kan" path="res://assets/protocol.png" id="1_bx00y"]
+[ext_resource type="Texture2D" uid="uid://d14y3oji0cl6j" path="res://assets/shoot_straight.png" id="2_a5tnl"]
+[ext_resource type="Script" path="res://src/game/templates/items/Protocol.gd" id="2_ey5yi"]
+[ext_resource type="Script" path="res://src/game/objects - instances/items/components/protocol_scripts/protocolFunction_shootStraight.gd" id="3_7jl1e"]
+[ext_resource type="Script" path="res://src/game/templates/items/components/InstantiatedSlot.gd" id="3_8lyr4"]
+[ext_resource type="Resource" uid="uid://cyj8utmbfek00" path="res://src/game/objects - instances/items/components/slots/slot_basicWeapon.tres" id="4_3e8s5"]
+
+[sub_resource type="Resource" id="Resource_0jfx6"]
+script = ExtResource("3_8lyr4")
+position = Vector2(100, 100)
+slot = ExtResource("4_3e8s5")
+
+[sub_resource type="Resource" id="Resource_4mbn3"]
+script = ExtResource("3_8lyr4")
+position = Vector2(400, 400)
+slot = ExtResource("4_3e8s5")
+
+[sub_resource type="Resource" id="Resource_vect4"]
+script = ExtResource("3_8lyr4")
+position = Vector2(0, 0)
+slot = ExtResource("4_3e8s5")
+
+[resource]
+script = ExtResource("2_ey5yi")
+id = "shoot_straight"
+name = "Straight to Hell"
+icon = ExtResource("2_a5tnl")
+board_texture = ExtResource("1_bx00y")
+slots = Array[ExtResource("3_8lyr4")]([SubResource("Resource_0jfx6"), SubResource("Resource_4mbn3"), SubResource("Resource_vect4")])
+effect_scripts = Array[GDScript]([])
+processing_script = ExtResource("3_7jl1e")

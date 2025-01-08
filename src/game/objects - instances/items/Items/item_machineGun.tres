@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://c1f8yiggw8liq"]
+
+[ext_resource type="Texture2D" uid="uid://bl2l8pncst3sv" path="res://assets/machine_gun.png" id="1_vwa30"]
+[ext_resource type="Script" path="res://src/game/templates/items/Item.gd" id="2_6g51a"]
+[ext_resource type="Script" path="res://src/game/objects - instances/items/components/item_scripts/cursed_item.gd" id="2_c63dl"]
+[ext_resource type="Resource" uid="uid://cuum2knhwhiyh" path="res://src/game/objects - instances/items/components/tags/tag_basic.tres" id="3_dr6yi"]
+[ext_resource type="PackedScene" uid="uid://cgqokptg1l60y" path="res://src/game/objects - instances/entities/bullets/normal_bullet.tscn" id="4_82mgi"]
+[ext_resource type="Resource" uid="uid://ctc51gpa0ucdm" path="res://src/game/objects - instances/items/components/tags/tag_weapon.tres" id="4_a7ru8"]
+
+[resource]
+script = ExtResource("2_6g51a")
+icon = ExtResource("1_vwa30")
+id = "machine_gun"
+name = "Machine Gun"
+tags = Array[Resource("res://src/game/templates/items/components/ItemTag.gd")]([ExtResource("3_dr6yi"), ExtResource("4_a7ru8")])
+spawn_scene = ExtResource("4_82mgi")
+effect_scripts = Array[GDScript]([])
+process_scripts = Array[GDScript]([ExtResource("2_c63dl")])
+base_cooldown = 1.0
+base_damage = 1.0
+base_lifespan = 1.0
+base_speed = 1.0

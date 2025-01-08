@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://81lw7faou5pq"]
+
+[ext_resource type="Script" path="res://src/game/templates/entities/bullet.gd" id="1_p0vhs"]
+[ext_resource type="Texture2D" uid="uid://8xtivwry7nvn" path="res://assets/pocisk.webp" id="2_86887"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y8eu3"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8c4kn"]
+properties/0/path = NodePath(".:velocity")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Bullet" type="CharacterBody2D"]
+position = Vector2(317, 344)
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_p0vhs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_86887")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y8eu3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_8c4kn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, -0.5)
+scale = Vector2(1.1, 1.05)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

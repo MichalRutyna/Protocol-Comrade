@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bburnnkd88kvw"]
+
+[ext_resource type="Script" path="res://src/gui/components/item_tile.gd" id="1_ffmb8"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 2
+script = ExtResource("1_ffmb8")
+
+[node name="HoverTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true

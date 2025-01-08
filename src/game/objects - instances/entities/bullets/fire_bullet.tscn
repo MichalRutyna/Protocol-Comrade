@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://hj3ulf0spoo"]
+
+[ext_resource type="Script" path="res://src/game/objects - instances/entities/bullets/fire_bullet.gd" id="1_5wb7o"]
+[ext_resource type="Texture2D" uid="uid://mqipt5oq7bje" path="res://assets/fireball.png" id="2_cjn5o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_damtm"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g6ikv"]
+properties/0/path = NodePath(".:velocity")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="FireBullet" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_5wb7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cjn5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_damtm")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g6ikv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1, -3.5)
+scale = Vector2(0.7, 1.05)

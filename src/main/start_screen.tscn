@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjo5lwtnf6dkp"]
+
+[ext_resource type="Script" path="res://src/main/start_screen.gd" id="1_6pcyn"]
+[ext_resource type="Texture2D" uid="uid://cl1r3akgdlk1l" path="res://assets/Bez_tytułu-removebg-preview.png" id="2_sm5dh"]
+[ext_resource type="Script" path="res://src/gui/components/PlayerList.gd" id="3_jkoql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2mly"]
+
+[node name="start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pcyn")
+
+[node name="menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Close" type="Button" parent="menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.004
+anchor_bottom = 0.007
+offset_left = 1832.0
+offset_top = 32.0
+offset_right = 1854.32
+offset_bottom = 62.72
+text = "X"
+
+[node name="Logo" type="TextureRect" parent="menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 645.5
+offset_top = 200.0
+offset_right = 1234.5
+offset_bottom = 356.0
+grow_horizontal = 2
+texture = ExtResource("2_sm5dh")
+stretch_mode = 5
+
+[node name="Central buttons" type="VBoxContainer" parent="menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 739.5
+offset_top = 371.0
+offset_right = 1140.5
+offset_bottom = 1040.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Begin" type="Button" parent="menu/Central buttons"]
+custom_minimum_size = Vector2(0, 57.845)
+layout_mode = 2
+text = "Create lobby"
+
+[node name="Serparator" type="HSeparator" parent="menu/Central buttons"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_o2mly")
+
+[node name="Join" type="Button" parent="menu/Central buttons"]
+layout_mode = 2
+text = "Join a game"
+
+[node name="Serparator2" type="HSeparator" parent="menu/Central buttons"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_o2mly")
+
+[node name="Settings" type="Button" parent="menu/Central buttons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Serparator3" type="HSeparator" parent="menu/Central buttons"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_o2mly")
+
+[node name="Exit" type="Button" parent="menu/Central buttons"]
+layout_mode = 2
+text = "Exit"
+
+[node name="PlayerList" type="ItemList" parent="menu"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 503.0
+offset_right = 929.0
+offset_bottom = 891.0
+max_columns = 3
+script = ExtResource("3_jkoql")
+
+[node name="Title" type="Label" parent="menu/PlayerList"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -51.0
+offset_right = 181.0
+offset_bottom = -11.0
+text = "Player list:"
+
+[node name="Player name" type="LineEdit" parent="menu"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 452.0
+offset_right = 534.0
+offset_bottom = 486.0
+placeholder_text = "Nickname"
+
+[node name="Lobby status" type="Label" parent="menu"]
+layout_mode = 0
+offset_left = 1298.0
+offset_top = 385.0
+offset_right = 1485.0
+offset_bottom = 504.0
+
+[node name="Start" type="Button" parent="menu"]
+layout_mode = 0
+offset_left = 1496.0
+offset_top = 780.0
+offset_right = 1726.0
+offset_bottom = 849.0
+text = "Start"
+
+[connection signal="player_list_changed" from="." to="menu/PlayerList" method="_on_player_list_changed"]
+[connection signal="pressed" from="menu/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="menu/Central buttons/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="menu/Central buttons/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="menu/Central buttons/Exit" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="menu/Start" to="." method="start_game"]

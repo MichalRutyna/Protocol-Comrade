@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProtocolSlot" load_steps=5 format=3 uid="uid://cyj8utmbfek00"]
+
+[ext_resource type="Script" path="res://src/game/templates/items/components/ProtocolSlot.gd" id="1_3rcmd"]
+[ext_resource type="Resource" uid="uid://cuum2knhwhiyh" path="res://src/game/objects - instances/items/components/tags/tag_basic.tres" id="1_bc38s"]
+[ext_resource type="Resource" uid="uid://ctc51gpa0ucdm" path="res://src/game/objects - instances/items/components/tags/tag_weapon.tres" id="2_ayrsu"]
+[ext_resource type="Texture2D" uid="uid://bvayo5iq2o1p8" path="res://assets/empty_slot_primary.png" id="4_cuu6g"]
+
+[resource]
+script = ExtResource("1_3rcmd")
+slot_icon = ExtResource("4_cuu6g")
+required_tags = Array[Resource("res://src/game/templates/items/components/ItemTag.gd")]([ExtResource("1_bc38s"), ExtResource("2_ayrsu")])
+disallowed_tags = Array[Resource("res://src/game/templates/items/components/ItemTag.gd")]([])

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://mt8ejh20txhi"]
+
+[ext_resource type="Script" path="res://src/game/objects - instances/entities/bullets/water_bullet.gd" id="1_n6x28"]
+[ext_resource type="Texture2D" uid="uid://clh133itq7758" path="res://assets/waterball.png" id="2_pry8a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l26gw"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jgprh"]
+properties/0/path = NodePath(".:velocity")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="WaterBullet" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_n6x28")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pry8a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l26gw")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_jgprh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.75, 0.7)

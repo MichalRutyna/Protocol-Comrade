@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Protocol" load_steps=10 format=3 uid="uid://e5ate7qg6ovh"]
+
+[ext_resource type="Texture2D" uid="uid://dcy1rniiolnjh" path="res://assets/protocol22.png" id="1_84q6q"]
+[ext_resource type="Script" path="res://src/game/templates/items/Protocol.gd" id="1_t7uev"]
+[ext_resource type="Texture2D" uid="uid://dwkjgjbxs2c2c" path="res://assets/shoot_orbital.png" id="2_i66gm"]
+[ext_resource type="Script" path="res://src/game/objects - instances/items/components/protocol_scripts/protocolFunction_shootOrbital.gd" id="3_h3bta"]
+[ext_resource type="Script" path="res://src/game/templates/items/components/InstantiatedSlot.gd" id="4_4rsqo"]
+[ext_resource type="Resource" uid="uid://cyj8utmbfek00" path="res://src/game/objects - instances/items/components/slots/slot_basicWeapon.tres" id="5_ua33y"]
+
+[sub_resource type="Resource" id="Resource_abp6y"]
+script = ExtResource("4_4rsqo")
+position = Vector2(15, 54)
+slot = ExtResource("5_ua33y")
+
+[sub_resource type="Resource" id="Resource_xaqcr"]
+script = ExtResource("4_4rsqo")
+position = Vector2(222, 123)
+slot = ExtResource("5_ua33y")
+
+[sub_resource type="Resource" id="Resource_0yibn"]
+script = ExtResource("4_4rsqo")
+position = Vector2(300, 350)
+slot = ExtResource("5_ua33y")
+
+[resource]
+script = ExtResource("1_t7uev")
+id = "shoot_oribtal"
+name = "Orbital"
+icon = ExtResource("2_i66gm")
+board_texture = ExtResource("1_84q6q")
+slots = Array[ExtResource("4_4rsqo")]([SubResource("Resource_abp6y"), SubResource("Resource_xaqcr"), SubResource("Resource_0yibn")])
+effect_scripts = Array[GDScript]([])
+processing_script = ExtResource("3_h3bta")

@@ -1,0 +1,46 @@
+{
+		"4": {
+			"spawnsPerSecond": 1,
+			"mobs": [
+				{
+					"name": "base_enemy_1",
+					"amount": 1
+				}
+			]
+		},
+		"2": {
+			"spawnsPerSecond": 2,
+			"mobs": [
+				{
+					"name": "base_enemy_2",
+					"amount": 1
+				}
+			]
+		},
+		"3": {
+			"spawnsPerSecond": 4,
+			"mobs": [
+				{
+					"name": "base_enemy_2",
+					"amount": 1
+				},
+				{
+					"name": "base_enemy_1",
+					"amount": 1
+				}
+			]
+		},
+		"1": {
+			"spawnsPerSecond": 8,
+			"mobs": [
+				{
+					"name": "base_enemy_2",
+					"amount": 2
+				},
+				{
+					"name": "shooting_enemy_1",
+					"amount": 1
+				}
+			]
+		},
+}
