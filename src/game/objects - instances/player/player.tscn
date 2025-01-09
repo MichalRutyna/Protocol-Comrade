@@ -174,7 +174,7 @@ properties/4/path = NodePath("Name:text")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Mech" type="CharacterBody2D"]
+[node name="Mech" type="CharacterBody2D" groups=["Players"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
